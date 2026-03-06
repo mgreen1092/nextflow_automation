@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { submitToFormspree } from "../lib/formspree";
 
 const initialState = { email: "", preferredTimes: "" };
 
@@ -6,18 +7,20 @@ export function ScheduleModal({ isOpen, onClose }) {
   const [formData, setFormData] = useState(initialState);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (!isOpen) {
       setFormData(initialState);
       setError("");
       setSuccess(false);
+      setIsSubmitting(false);
     }
   }, [isOpen]);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       setError("Please enter a valid email.");
@@ -30,8 +33,28 @@ export function ScheduleModal({ isOpen, onClose }) {
       return;
     }
     setError("");
-    setSuccess(true);
-    setFormData(initialState);
+    setIsSubmitting(true);
+
+    try {
+      await submitToFormspree({
+        formType: "schedule_request",
+        email: formData.email,
+        preferredTimes: formData.preferredTimes,
+      });
+      setSuccess(true);
+      setFormData(initialState);
+    } catch (submitError) {
+      setSuccess(false);
+      if (submitError.message === "missing_endpoint") {
+        setError(
+          "Form is not configured yet. Add VITE_FORMSPREE_ENDPOINT to enable submissions.",
+        );
+      } else {
+        setError("Submission failed. Please try again.");
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -103,8 +126,8 @@ export function ScheduleModal({ isOpen, onClose }) {
             <button type="button" className="secondary-btn" onClick={onClose}>
               Cancel
             </button>
-            <button type="submit" className="cta-btn">
-              Submit Request
+            <button type="submit" className="cta-btn" disabled={isSubmitting}>
+              {isSubmitting ? "Submitting..." : "Submit Request"}
             </button>
           </div>
         </form>

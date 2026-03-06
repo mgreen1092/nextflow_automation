@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { submitToFormspree } from "../lib/formspree";
 
 const initialForm = {
   name: "",
@@ -11,6 +12,8 @@ export function CtaContactSection({ onScheduleClick }) {
   const [formData, setFormData] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = () => {
     const nextErrors = {};
@@ -29,7 +32,7 @@ export function CtaContactSection({ onScheduleClick }) {
     return nextErrors;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const nextErrors = validate();
     if (Object.keys(nextErrors).length) {
@@ -38,14 +41,38 @@ export function CtaContactSection({ onScheduleClick }) {
       return;
     }
     setErrors({});
-    setSubmitted(true);
-    setFormData(initialForm);
+    setSubmitError("");
+    setIsSubmitting(true);
+
+    try {
+      await submitToFormspree({
+        formType: "contact",
+        name: formData.name,
+        email: formData.email,
+        businessType: formData.businessType,
+        automationGoal: formData.automationGoal,
+      });
+      setSubmitted(true);
+      setFormData(initialForm);
+    } catch (error) {
+      setSubmitted(false);
+      if (error.message === "missing_endpoint") {
+        setSubmitError(
+          "Form is not configured yet. Add VITE_FORMSPREE_ENDPOINT to enable submissions.",
+        );
+      } else {
+        setSubmitError("Submission failed. Please try again.");
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     setErrors((prev) => ({ ...prev, [name]: "" }));
+    setSubmitError("");
   };
 
   return (
@@ -73,6 +100,11 @@ export function CtaContactSection({ onScheduleClick }) {
                 role="status"
               >
                 Thanks. Your message was submitted successfully.
+              </p>
+            )}
+            {submitError && (
+              <p className="mt-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+                {submitError}
               </p>
             )}
             <form className="mt-4 space-y-4" onSubmit={handleSubmit} noValidate>
@@ -142,8 +174,12 @@ export function CtaContactSection({ onScheduleClick }) {
                   <p className="mt-1 text-sm text-red-700">{errors.automationGoal}</p>
                 )}
               </div>
-              <button type="submit" className="cta-btn w-full sm:w-auto">
-                Submit
+              <button
+                type="submit"
+                className="cta-btn w-full sm:w-auto"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Submitting..." : "Submit"}
               </button>
             </form>
           </div>

@@ -2,6 +2,18 @@
 
 Single-page marketing website for a solo freelancer offering AI workflow automation services.
 
+## Formspree setup
+
+Create a Formspree form and copy its endpoint (example: `https://formspree.io/f/xxxxabcd`).
+
+Create `.env` in project root:
+
+```bash
+VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/xxxxabcd
+```
+
+Both the contact form and "Schedule a Free Workflow Review" modal submit to this endpoint.
+
 ## Run locally
 
 ```bash
