@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-deep-slate: #0f172a;
+  --color-indigo: #4f46e5;
+  --color-indigo-dark: #4338ca;
+  --color-violet: #8b5cf6;
+  --color-bg-light: #f8fafc;
+  --color-text-dark: #020617;
+  --color-text-muted: #64748b;
+  --color-white: #ffffff;
+
+  --color-light-text-on-dark: #cbd5f5;
+  --color-soft-gray: #cbd5e1;
+
+  --border-subtle: rgba(2, 6, 23, 0.08);
+  --divider-subtle: rgba(2, 6, 23, 0.06);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply antialiased;
+  background-color: var(--color-bg-light);
+  color: var(--color-text-dark);
+}
+
+.section-wrap {
+  @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
+}
+
+.card {
+  @apply relative rounded-2xl border border-border bg-white shadow-card transition-shadow;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(79, 70, 229, 0.06),
+    transparent 35%
+  );
+  pointer-events: none;
+}
+
+.card:hover {
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.24);
+}
+
+.cta-btn {
+  @apply inline-flex items-center justify-center rounded-full bg-accent px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent-dark focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 12px 30px rgba(15, 23, 42, 0.35);
+}
+
+.secondary-btn {
+  @apply inline-flex items-center justify-center rounded-full border border-accent bg-transparent px-5 py-3 text-sm font-semibold text-accent transition focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+}
+
+.secondary-btn:hover {
+  background-color: rgba(79, 70, 229, 0.05);
+}
+
+.hero-secondary-btn {
+  @apply inline-flex items-center justify-center rounded-full border border-white/40 bg-transparent px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+}
+
+.section-dark {
+  @apply relative overflow-hidden text-white;
+  background-color: var(--color-deep-slate);
+}
+
+.section-divider {
+  border-top: 1px solid var(--divider-subtle);
+}
+
+.aurora-layer {
+  position: absolute;
+  inset: -40%;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(
+      circle at 20% 0%,
+      rgba(79, 70, 229, 0.35),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(139, 92, 246, 0.32),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(15, 23, 42, 1),
+      rgba(15, 23, 42, 0.94)
+    );
+  filter: blur(60px);
+  opacity: 0.9;
+}
