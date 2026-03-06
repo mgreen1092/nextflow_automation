@@ -1,4 +1,5 @@
-const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+const FORMSPREE_ENDPOINT =
+  import.meta.env.VITE_FORMSPREE_ENDPOINT || "https://formspree.io/f/xyknypbo";
 
 export async function submitToFormspree(payload) {
   if (!FORMSPREE_ENDPOINT) {
