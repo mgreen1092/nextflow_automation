@@ -165,7 +165,7 @@ export function Header({ onScheduleClick }) {
         className={`fixed top-20 right-0 bottom-0 z-40 w-full max-w-sm border-l border-white/[0.08] transition-transform duration-300 ease-out lg:hidden ${
           mobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
-        style={{ background: "rgba(15,23,42,0.98)" }}
+        style={{ background: "rgba(15,23,42,0.995)" }}
         aria-hidden={!mobileOpen}
       >
         <div className="flex flex-col gap-1 p-6">
@@ -179,14 +179,19 @@ export function Header({ onScheduleClick }) {
           >
             Schedule Free Workflow Review
           </button>
-          <nav className="mt-6 flex flex-col gap-1" aria-label="Mobile navigation">
+          <nav
+            className="mt-6 flex flex-col gap-2 rounded-2xl bg-black/25 p-2"
+            aria-label="Mobile navigation"
+          >
             {allNavItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={handleNavClick}
-                className={`rounded-lg px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-white/5 hover:text-accent ${
-                  activeHash === item.href ? "bg-white/5 text-accent" : ""
+                className={`rounded-lg border border-white/10 bg-white/8 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-white/15 hover:text-accent ${
+                  activeHash === item.href
+                    ? "border-accent/50 bg-white/15 text-accent"
+                    : ""
                 }`}
               >
                 {item.label}
