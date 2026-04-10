@@ -107,3 +107,16 @@ body {
   filter: blur(60px);
   opacity: 0.9;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

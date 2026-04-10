@@ -59,21 +59,21 @@ export function ScheduleModal({ isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center bg-ink/70 p-4">
-      <div className="card w-full max-w-lg p-6">
+      <div className="card w-full max-w-lg p-6 shadow-xl">
         <div className="mb-4 flex items-start justify-between gap-4">
-          <h2 className="text-xl font-bold text-ink">Schedule a Free Workflow Review</h2>
+          <h2 className="text-xl font-bold text-ink">Book a demo</h2>
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg border border-border px-3 py-1 text-sm text-slate hover:bg-slate/10"
+            className="rounded-lg border border-border px-3 py-1 text-sm text-slate hover:bg-mist"
             aria-label="Close schedule modal"
           >
             Close
           </button>
         </div>
         <p className="text-sm text-slate">
-          Share your email and preferred times. You&apos;ll get a scheduling reply
-          to confirm a free 20-minute review.
+          Share your email and a few times that work. We&apos;ll confirm a short demo focused
+          on your practice—claims, schedule recovery, and outbound calling.
         </p>
         {success && (
           <p
@@ -127,7 +127,7 @@ export function ScheduleModal({ isOpen, onClose }) {
               Cancel
             </button>
             <button type="submit" className="cta-btn" disabled={isSubmitting}>
-              {isSubmitting ? "Submitting..." : "Submit Request"}
+              {isSubmitting ? "Submitting..." : "Submit request"}
             </button>
           </div>
         </form>

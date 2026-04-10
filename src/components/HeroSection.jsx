@@ -1,7 +1,7 @@
-const credibilityPoints = [
-  "Save 5–10 hours/week on admin work",
-  "Simple, secure setups using tools you already use",
-  "Clear scope, fast turnaround (typically 2–3 weeks)",
+const benefitBullets = [
+  "Recover missed production from no-shows, recall, and pending treatment",
+  "Reduce no-shows and follow-up gaps with consistent outreach",
+  "Integrate with your existing PMS, phones, and team workflow",
 ];
 
 export function HeroSection({ onScheduleClick }) {
@@ -12,29 +12,35 @@ export function HeroSection({ onScheduleClick }) {
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-center">
           <div>
             <p className="mb-4 inline-flex rounded-full border border-border bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate">
-              Workflow Automation Specialist
+              Dental revenue recovery
             </p>
             <h1 className="text-balance text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-              AI Workflow Automation for Therapy Practices &amp; Professional
-              Service Firms
+              Recover lost dental revenue without hiring more staff
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-light-gray">
-              Reduce paperwork, streamline onboarding, and automate
-              documentation—so you can get hours back every week.
+              NextFlow installs revenue recovery systems for dental offices: insurance
+              follow-up, missed-appointment recovery, patient reactivation, treatment
+              follow-up, HIPAA-conscious documentation support—and an{" "}
+              <strong className="font-semibold text-white">AI outbound phone agent</strong>{" "}
+              that fills the schedule and pursues balances without burying your front desk.
+            </p>
+            <p className="mt-4 max-w-2xl text-base font-medium text-light-gray">
+              We don&apos;t just show you where revenue is leaking. We help recover it
+              for you.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <button onClick={onScheduleClick} className="cta-btn" type="button">
-                Schedule a Free Workflow Review
+                Book a demo
               </button>
-              <a href="#services" className="hero-secondary-btn">
-                See Services
+              <a href="#how-it-works" className="hero-secondary-btn">
+                See how it works
               </a>
             </div>
             <ul className="mt-8 space-y-3">
-              {credibilityPoints.map((point) => (
+              {benefitBullets.map((point) => (
                 <li key={point} className="flex items-start gap-3 text-sm text-white">
                   <span
-                    className="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-accent"
+                    className="mt-1 inline-block h-2.5 w-2.5 shrink-0 rounded-full bg-accent"
                     aria-hidden="true"
                   />
                   <span>{point}</span>
@@ -43,16 +49,23 @@ export function HeroSection({ onScheduleClick }) {
             </ul>
           </div>
           <div className="card p-6 sm:p-8">
-            <h2 className="text-lg font-bold text-ink">What You Can Expect</h2>
-            <ul className="mt-5 space-y-4 text-sm leading-relaxed text-slate">
-              <li className="rounded-xl border border-border bg-mist p-4">
-                Focus on practical automation, not complex platform overhauls.
+            <h2 className="text-lg font-bold text-ink">What we implement</h2>
+            <p className="mt-2 text-sm text-slate">
+              Done-for-you workflows and calling—scoped to your practice, not a generic
+              template.
+            </p>
+            <ul className="mt-6 space-y-3 text-sm leading-relaxed text-slate">
+              <li className="rounded-xl border border-border bg-mist px-4 py-3">
+                <span className="font-semibold text-ink">Insurance revenue recovery</span>
+                — aging claims, eligibility gaps, and follow-up your team never gets to.
               </li>
-              <li className="rounded-xl border border-border bg-mist p-4">
-                Clear implementation plans tied to your real workflow bottlenecks.
+              <li className="rounded-xl border border-border bg-mist px-4 py-3">
+                <span className="font-semibold text-ink">Schedule recovery</span>
+                — no-shows, recall, and unscheduled treatment with phone + SMS paths.
               </li>
-              <li className="rounded-xl border border-border bg-mist p-4">
-                Secure systems built around your existing tools and processes.
+              <li className="rounded-xl border border-border bg-mist px-4 py-3">
+                <span className="font-semibold text-ink">Outbound phone agent</span>
+                — practical calling that hands off warm leads to your staff.
               </li>
             </ul>
           </div>

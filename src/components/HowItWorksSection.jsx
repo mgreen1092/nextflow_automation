@@ -1,34 +1,52 @@
 const steps = [
   {
-    title: "Free Workflow Review (20 minutes)",
-    description: "Identify 1–2 high-impact automations.",
+    title: "Identify revenue leaks",
+    description:
+      "We map where money and visits stall—claims, schedule, treatment acceptance, recall, balances—using your real reports and queues.",
   },
   {
-    title: "Build & Configure (2–3 weeks)",
-    description: "Implement with existing tools.",
+    title: "Deploy workflows and calling",
+    description:
+      "We build automations and configure the outbound phone agent against lists and rules your team signs off on.",
   },
   {
-    title: "Launch + Support",
-    description: "Test, train, optional monthly support.",
+    title: "Re-engage patients consistently",
+    description:
+      "Calls, texts, and internal tasks fire on a steady cadence so follow-up is not a whenever-we-get-to-it project.",
+  },
+  {
+    title: "Track recovered opportunities",
+    description:
+      "Simple visibility into what was attempted, what landed on the schedule, and what still needs a human touch.",
   },
 ];
 
 export function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="scroll-mt-24 section-divider py-16">
+    <section id="how-it-works" className="scroll-mt-24 border-t border-border bg-white py-20 sm:py-24">
       <div className="section-wrap">
-        <h2 className="text-3xl font-bold tracking-tight text-ink">How It Works</h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
+            How it works
+          </h2>
+          <p className="mt-4 text-slate">
+            No complicated change management program—just a focused build that respects
+            how your office already runs.
+          </p>
+        </div>
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
-            <article key={step.title} className="card p-6">
-              <p className="flex items-center gap-3 text-xs font-bold uppercase tracking-wide text-accent">
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-[11px] text-white">
+            <article key={step.title} className="relative card p-6">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent text-sm font-extrabold text-white shadow-md shadow-accent/20">
                   {index + 1}
                 </span>
-                <span>Step {index + 1}</span>
-              </p>
-              <h3 className="mt-2 text-xl font-semibold text-ink">{step.title}</h3>
-              <p className="mt-3 text-slate">{step.description}</p>
+                <span className="text-xs font-bold uppercase tracking-wide text-slate">
+                  Step {index + 1}
+                </span>
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-ink">{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate">{step.description}</p>
             </article>
           ))}
         </div>

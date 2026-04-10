@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { Header } from "./components/Header";
 import { HeroSection } from "./components/HeroSection";
-import { AudienceSection } from "./components/AudienceSection";
+import { TrustBarSection } from "./components/TrustBarSection";
 import { ProblemsSection } from "./components/ProblemsSection";
 import { ServicesSection } from "./components/ServicesSection";
+import { PhoneAgentSection } from "./components/PhoneAgentSection";
 import { HowItWorksSection } from "./components/HowItWorksSection";
-import { ExampleWorkflowSection } from "./components/ExampleWorkflowSection";
+import { OutcomesSection } from "./components/OutcomesSection";
+import { IdealFitSection } from "./components/IdealFitSection";
+import { FinalCtaSection } from "./components/FinalCtaSection";
 import { CtaContactSection } from "./components/CtaContactSection";
 import { AboutSection } from "./components/AboutSection";
 import { FaqSection } from "./components/FaqSection";
@@ -26,11 +29,14 @@ function App() {
       <Header onScheduleClick={() => setIsScheduleOpen(true)} />
       <main className="pt-20">
         <HeroSection onScheduleClick={() => setIsScheduleOpen(true)} />
-        <AudienceSection />
+        <TrustBarSection />
         <ProblemsSection />
         <ServicesSection onScheduleClick={() => setIsScheduleOpen(true)} />
+        <PhoneAgentSection />
         <HowItWorksSection />
-        <ExampleWorkflowSection />
+        <OutcomesSection />
+        <IdealFitSection />
+        <FinalCtaSection onScheduleClick={() => setIsScheduleOpen(true)} />
         <CtaContactSection onScheduleClick={() => setIsScheduleOpen(true)} />
         <AboutSection />
         <FaqSection />

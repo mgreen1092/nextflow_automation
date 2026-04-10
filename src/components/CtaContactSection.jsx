@@ -24,10 +24,10 @@ export function CtaContactSection({ onScheduleClick }) {
       nextErrors.email = "Enter a valid email address.";
     }
     if (!formData.businessType.trim()) {
-      nextErrors.businessType = "Business type is required.";
+      nextErrors.businessType = "Practice name or type is required.";
     }
     if (!formData.automationGoal.trim()) {
-      nextErrors.automationGoal = "Please share what you want to automate.";
+      nextErrors.automationGoal = "Please share what you want to recover or automate.";
     }
     return nextErrors;
   };
@@ -82,18 +82,19 @@ export function CtaContactSection({ onScheduleClick }) {
         <div className="grid gap-10 rounded-3xl bg-[color:rgba(15,23,42,0.88)] p-7 shadow-card sm:p-10 lg:grid-cols-[1fr_1.1fr]">
           <div>
             <h2 className="text-3xl font-bold tracking-tight text-white">
-              Get a Free Workflow Review
+              Talk with NextFlow
             </h2>
             <p className="mt-4 max-w-xl text-light-gray">
-              Book a free 20-minute call. I&apos;ll review your current process and
-              share specific automation opportunities.
+              Share a bit about your practice and what you want to recover—claims,
+              schedule, treatment acceptance, or outbound calling. We&apos;ll reply with
+              next steps or schedule a demo.
             </p>
             <button onClick={onScheduleClick} className="cta-btn mt-6" type="button">
-              Schedule a Free Workflow Review
+              Book a demo
             </button>
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-white">Send a quick message</h3>
+            <h3 className="text-lg font-semibold text-white">Send a message</h3>
             {submitted && (
               <p
                 className="mt-3 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800"
@@ -119,7 +120,7 @@ export function CtaContactSection({ onScheduleClick }) {
                   onChange={handleChange}
                   className="w-full rounded-xl border border-border bg-white px-4 py-2.5 text-ink outline-none ring-accent focus:ring-2"
                 />
-                {errors.name && <p className="mt-1 text-sm text-red-700">{errors.name}</p>}
+                {errors.name && <p className="mt-1 text-sm text-red-200">{errors.name}</p>}
               </div>
               <div>
                 <label htmlFor="email" className="mb-1 block text-sm font-medium text-white">
@@ -134,7 +135,7 @@ export function CtaContactSection({ onScheduleClick }) {
                   className="w-full rounded-xl border border-border bg-white px-4 py-2.5 text-ink outline-none ring-accent focus:ring-2"
                 />
                 {errors.email && (
-                  <p className="mt-1 text-sm text-red-700">{errors.email}</p>
+                  <p className="mt-1 text-sm text-red-200">{errors.email}</p>
                 )}
               </div>
               <div>
@@ -142,17 +143,18 @@ export function CtaContactSection({ onScheduleClick }) {
                   htmlFor="businessType"
                   className="mb-1 block text-sm font-medium text-white"
                 >
-                  Business type
+                  Practice name or type
                 </label>
                 <input
                   id="businessType"
                   name="businessType"
                   value={formData.businessType}
                   onChange={handleChange}
+                  placeholder="e.g. 3-provider GP, Chicago"
                   className="w-full rounded-xl border border-border bg-white px-4 py-2.5 text-ink outline-none ring-accent focus:ring-2"
                 />
                 {errors.businessType && (
-                  <p className="mt-1 text-sm text-red-700">{errors.businessType}</p>
+                  <p className="mt-1 text-sm text-red-200">{errors.businessType}</p>
                 )}
               </div>
               <div>
@@ -160,7 +162,7 @@ export function CtaContactSection({ onScheduleClick }) {
                   htmlFor="automationGoal"
                   className="mb-1 block text-sm font-medium text-white"
                 >
-                  What you want to automate
+                  What you want to recover or automate
                 </label>
                 <textarea
                   id="automationGoal"
@@ -168,10 +170,11 @@ export function CtaContactSection({ onScheduleClick }) {
                   value={formData.automationGoal}
                   onChange={handleChange}
                   rows={4}
+                  placeholder="Insurance aging, no-shows, recall, treatment follow-up, balances, phone agent…"
                   className="w-full rounded-xl border border-border bg-white px-4 py-2.5 text-ink outline-none ring-accent focus:ring-2"
                 />
                 {errors.automationGoal && (
-                  <p className="mt-1 text-sm text-red-700">{errors.automationGoal}</p>
+                  <p className="mt-1 text-sm text-red-200">{errors.automationGoal}</p>
                 )}
               </div>
               <button

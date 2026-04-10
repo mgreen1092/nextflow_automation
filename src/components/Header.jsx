@@ -2,11 +2,13 @@ import { useState, useEffect, useRef } from "react";
 
 const mainNavItems = [
   { label: "Services", href: "#services" },
-  { label: "How it Works", href: "#how-it-works" },
+  { label: "AI phone agent", href: "#ai-phone-agent" },
+  { label: "How it works", href: "#how-it-works" },
 ];
 
 const moreNavItems = [
-  { label: "Example Automation", href: "#example-automation" },
+  { label: "Outcomes", href: "#outcomes" },
+  { label: "Who it's for", href: "#ideal-fit" },
   { label: "About", href: "#about" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
@@ -54,12 +56,7 @@ export function Header({ onScheduleClick }) {
           className="flex w-full items-center justify-between gap-6 lg:justify-start"
           aria-label="Primary navigation"
         >
-          {/* Left: Logo */}
-          <a
-            href="#top"
-            className="shrink-0"
-            aria-label="NextFlow Automation"
-          >
+          <a href="#top" className="shrink-0" aria-label="NextFlow Automation home">
             {!logoError ? (
               <img
                 src="/nextflow-logo.png"
@@ -74,7 +71,6 @@ export function Header({ onScheduleClick }) {
             )}
           </a>
 
-          {/* Desktop: Main nav + More dropdown + CTA */}
           <div className="hidden flex-1 items-center justify-end gap-6 lg:flex">
             {mainNavItems.map((item) => (
               <a
@@ -88,7 +84,6 @@ export function Header({ onScheduleClick }) {
               </a>
             ))}
 
-            {/* More dropdown */}
             <div className="relative" ref={moreRef}>
               <button
                 type="button"
@@ -110,7 +105,7 @@ export function Header({ onScheduleClick }) {
                 <div
                   id="more-menu"
                   role="menu"
-                  className="absolute right-0 top-full z-50 mt-2 min-w-[200px] rounded-xl border border-white/[0.08] py-2 shadow-xl"
+                  className="absolute right-0 top-full z-50 mt-2 min-w-[220px] rounded-xl border border-white/[0.08] py-2 shadow-xl"
                   style={{
                     background: "rgba(15,23,42,0.98)",
                     boxShadow: "0 20px 40px rgba(0,0,0,0.25)",
@@ -134,14 +129,13 @@ export function Header({ onScheduleClick }) {
             </div>
           </div>
 
-          {/* Right: CTA + mobile hamburger */}
           <div className="flex items-center gap-4">
             <button
               onClick={onScheduleClick}
               className="cta-btn hidden lg:inline-flex"
               type="button"
             >
-              Schedule Free Workflow Review
+              Book a demo
             </button>
             <button
               type="button"
@@ -159,7 +153,6 @@ export function Header({ onScheduleClick }) {
         </nav>
       </div>
 
-      {/* Mobile: Slide-over drawer */}
       <div
         id="mobile-drawer"
         className={`fixed top-20 right-0 bottom-0 z-40 w-full max-w-sm border-l border-slate-800 bg-slate-950 transition-transform duration-300 ease-out lg:hidden ${
@@ -176,7 +169,7 @@ export function Header({ onScheduleClick }) {
             className="cta-btn w-full"
             type="button"
           >
-            Schedule Free Workflow Review
+            Book a demo
           </button>
           <nav
             className="mt-6 flex flex-col gap-2 rounded-2xl bg-slate-950 p-2"
@@ -200,7 +193,6 @@ export function Header({ onScheduleClick }) {
         </div>
       </div>
 
-      {/* Mobile: Backdrop when drawer is open */}
       {mobileOpen && (
         <button
           type="button"
